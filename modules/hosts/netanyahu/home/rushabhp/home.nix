@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.homeModules.home = { ... }: {
+  flake.homeModules.home = { pkgs, ... }: {
 
     imports = [
       self.homeModules.git
@@ -13,6 +13,8 @@
       self.homeModules.mcfly
       self.homeModules.direnv
       self.homeModules.starship
+      self.homeModules.btop
+      self.homeModules.bat
       self.homeModules.bash
 
       # Desktop

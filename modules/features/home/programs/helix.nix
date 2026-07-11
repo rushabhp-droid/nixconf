@@ -16,6 +16,7 @@ _: {
           nixfmt
           statix
           deadnix
+          ripgrep
         ];
         settings = {
           editor = {
