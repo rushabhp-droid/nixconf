@@ -1,0 +1,19 @@
+{ inputs, ... }: {
+  imports = [ inputs.treefmt-nix.flakeModule ];
+
+  perSystem = _: {
+    treefmt = {
+      projectRootFile = "flake.nix";
+
+      programs = {
+        nixfmt = {
+          enable = true;
+          strict = true;
+        };
+        statix.enable = true;
+        deadnix.enable = true;
+        prettier.enable = true;
+      };
+    };
+  };
+}
