@@ -110,7 +110,7 @@ nix fmt
 
 ```bash
 # Partition & format the disk declaratively
-sudo nix run github:nix-community/disko -- --mode destroy,format,mount ./modules/hosts/netanyahu/system/disko.nix
+sudo nix run github:nix-community/disko -- --mode destroy,format,mount .#netanyahu
 
 # Install NixOS
 sudo nixos-install --flake .#netanyahu
