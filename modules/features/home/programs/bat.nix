@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+_: {
   flake.homeModules.bat = _: {
     programs.bat = {
       enable = true;

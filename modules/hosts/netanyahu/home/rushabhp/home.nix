@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.homeModules.home = { pkgs, ... }: {
+  flake.homeModules.home = { ... }: {
 
     imports = [
       self.homeModules.git

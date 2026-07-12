@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+_: {
   flake.homeModules.starship = _: {
     programs.starship = {
       enable = true;
