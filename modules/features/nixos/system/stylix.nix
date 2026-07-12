@@ -7,6 +7,8 @@
     stylix = {
       enable = true;
 
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+
       image = ../../../../wallpapers/linux-purple.png;
 
       polarity = "dark";
