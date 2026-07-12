@@ -34,6 +34,10 @@
           package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
         };
+
+        sizes = {
+          desktop = 15.0;
+        };
       };
 
       opacity = {
