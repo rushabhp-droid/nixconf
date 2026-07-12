@@ -28,7 +28,6 @@
       self.homeModules.rofi
       self.homeModules.wleave
       self.homeModules.cliphist
-      self.homeModules.quickshell
     ];
 
     home = {
