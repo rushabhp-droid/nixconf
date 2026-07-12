@@ -1,0 +1,32 @@
+name: Build and Cache NixOS Configuration
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  build:
+    name: Build netanyahu
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v25
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Cachix
+      uses: cachix/cachix-action@v14
+      with:
+        name: kryptoaries # Your cache name
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+    - name: Build NixOS Configuration
+      run: nix build .#nixosConfigurations.netanyahu.config.system.build.toplevel --print-out-paths
