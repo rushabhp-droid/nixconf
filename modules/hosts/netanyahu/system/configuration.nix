@@ -18,6 +18,7 @@
       # Hardware
       ## Nvidia
       self.nixosModules.bluetooth
+      self.nixosModules.librepods
       self.nixosModules.nvidia
       self.nixosModules.nvidia-prime
       self.nixosModules.cardwire
