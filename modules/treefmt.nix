@@ -13,6 +13,7 @@
         statix.enable = true;
         deadnix.enable = true;
         prettier.enable = true;
+        mdformat.enable = true;
       };
     };
   };
