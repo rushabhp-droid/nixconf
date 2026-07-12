@@ -10,7 +10,7 @@
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
-      kernelPackages = pkgs.linux-cachyos-latest-x86_64-v3;
+      kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
     };
   };
 }
