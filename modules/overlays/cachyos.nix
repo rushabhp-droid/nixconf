@@ -1,3 +1,1 @@
-{ inputs, ... }: {
-  flake.overlays.cachyos = inputs.nix-cachyos-kernel.overlays.pinned;
-}
+{ inputs, ... }: { flake.overlays.cachyos = inputs.nix-cachyos-kernel.overlays.pinned; }

@@ -1,9 +1,7 @@
 { self, ... }: {
 
   flake.nixosModules.core = { pkgs, ... }: {
-    nixpkgs.overlays = [
-      self.overlays.cachyos
-    ];
+    nixpkgs.overlays = [ self.overlays.cachyos ];
 
     boot = {
       loader = {
