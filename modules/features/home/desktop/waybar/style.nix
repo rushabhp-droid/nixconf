@@ -1,141 +1,92 @@
 _: {
-  flake.homeModules.waybar = _: {
+  flake.homeModules.waybar = {config, lib, ...}: 
+  let
+  # Alias for easier access to Stylix colors
+  colors = config.lib.stylix.colors.withHashtag;
+in{
     programs.waybar.style = ''
-      * {
-        border: none;
-        border-radius: 0;
-        font-family: "JetBrainsMono Nerd Font";
-        font-size: 13px;
-        font-weight: 500;
-        min-height: 0;
-      }
-
-      window#waybar {
-        background: alpha(@base00, 0.85);
-        color: @base05;
-        border-radius: 12px;
-      }
-
-      tooltip {
-        background: @base00;
-        border-radius: 12px;
-        border: 2px solid @base0D;
-      }
-      tooltip label {
-        color: @base05;
-      }
-
-      #workspaces {
-        margin: 4px 8px;
-        background: alpha(@base01, 0.8);
-        border-radius: 16px;
-      }
-
-      #workspaces button {
-        padding: 0 10px;
-        background: transparent;
-        color: @base04;
-        border-radius: 16px;
-        transition: all 0.3s ease;
-      }
-
-      #workspaces button:hover {
-        background: alpha(@base0D, 0.3);
-      }
-
-      #workspaces button.active {
-        background: @base0D;
-        color: @base00;
-        font-weight: bold;
-      }
-
-      #workspaces button.urgent {
-        background: @base08;
-        color: @base00;
-      }
-
-      #window {
-        margin: 4px 8px;
-        color: @base05;
-      }
-
-      #clock,
-      #battery,
-      #network,
-      #pulseaudio,
-      #tray {
-        padding: 0 12px;
-        margin: 4px 4px;
-        color: @base05;
-        background-color: alpha(@base01, 0.8);
-        border-radius: 16px;
-        transition: all 0.3s ease;
-      }
-
-      #clock:hover,
-      #battery:hover,
-      #network:hover,
-      #pulseaudio:hover,
-      #tray:hover {
-        background-color: alpha(@base02, 0.9);
-      }
-
-      #clock {
-        color: @base0E;
-        background-color: alpha(@base01, 0.8);
-      }
-
-      #battery {
-        color: @base0B;
-      }
-      #battery.charging, #battery.plugged {
-        color: @base0C;
-      }
-      @keyframes blink {
-        to {
-          background-color: #ffffff;
-          color: #000000;
+    * {
+          border: none;
+          border-radius: 0;
+          /* Dynamically use Stylix fonts */
+          font-family: "${config.stylix.fonts.monospace.name}"; 
+          font-size: ${toString config.stylix.fonts.sizes.desktop}px;
+          min-height: 0;
         }
-      }
-      #battery.critical:not(.charging) {
-        background-color: @base08;
-        color: @base00;
-        animation-name: blink;
-        animation-duration: 0.5s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
 
-      #network {
-        color: @base0D;
-      }
+        window#waybar {
+          background-color: ${colors.base00}; 
+          color: ${colors.base05};
+        }
 
-      #network.disconnected {
-        background-color: @base08;
-        color: @base00;
-      }
+        /* Hyprland Workspace Styling */
+        #workspaces button {
+          padding: 0 6px;
+          background: transparent;
+          color: ${colors.base05};
+          border-bottom: 2px solid transparent;
+        }
 
-      #pulseaudio {
-        color: @base0A;
-      }
+        #workspaces button.active {
+          color: ${colors.base0C}; /* Cyan/Teal accent */
+          border-bottom: 2px solid ${colors.base0C}; 
+        }
 
-      #pulseaudio.muted {
-        color: @base03;
-      }
+        #workspaces button:hover {
+          background: transparent;
+          box-shadow: inherit;
+          text-shadow: inherit;
+        }
 
-      #tray {
-        margin-right: 8px;
-      }
+        /* Separator Styling */
+        #custom-separator {
+          color: ${colors.base03}; /* Muted grey/comment color */
+          padding: 0 8px;
+        }
 
-      #tray > .passive {
-        -gtk-icon-effect: dim;
-      }
+        /* Right Module Base Styling */
+        #network, #cpu, #memory, #disk, #clock, #battery, #tray {
+          padding: 0 4px;
+          margin: 0 2px;
+          border-bottom: 2px solid transparent;
+        }
 
-      #tray > .needs-attention {
-        -gtk-icon-effect: highlight;
-        background-color: @base08;
-      }
+        /* Dynamic Stylix Base16 Module Colors */
+        #network {
+          color: ${colors.base0D}; /* Blue */
+          border-bottom-color: ${colors.base0D};
+        }
+
+        #cpu {
+          color: ${colors.base0B}; /* Green */
+          border-bottom-color: ${colors.base0B};
+        }
+
+        #memory {
+          color: ${colors.base0E}; /* Purple */
+          border-bottom-color: ${colors.base0E};
+        }
+
+        #disk {
+          color: ${colors.base0A}; /* Yellow */
+          border-bottom-color: ${colors.base0A};
+        }
+
+        #clock {
+          color: ${colors.base0C}; /* Cyan/Teal */
+          border-bottom-color: ${colors.base0C};
+        }
+
+        #battery {
+          color: ${colors.base0E};
+          border-bottom-color: ${colors.base0E};
+        }
+
+        #tray {
+          color: ${colors.base05}; /* Foreground */
+          border-bottom-color: ${colors.base04};
+        }
+
     '';
   };
 }

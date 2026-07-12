@@ -22,6 +22,7 @@
       self.homeModules.hyprpaper
       self.homeModules.hypridle
       self.homeModules.hyprlock
+      self.homeModules.waybar
       self.homeModules.swaync
       self.homeModules.swayosd
       self.homeModules.xdg

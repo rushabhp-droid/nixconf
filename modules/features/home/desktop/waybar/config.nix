@@ -1,102 +1,82 @@
 _: {
   flake.homeModules.waybar = _: {
     programs.waybar.settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        margin-top = 8;
-        margin-left = 12;
-        margin-right = 12;
-        margin-bottom = 0;
-        height = 36;
-        spacing = 4;
-        
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "network" "battery" "tray" ];
+       mainBar = {
+          layer = "top";
+          position = "top";
+          height = 30;
+          spacing = 0;
 
-        "hyprland/workspaces" = {
-          disable-scroll = true;
-          all-outputs = true;
-          active-only = false;
-          on-click = "activate";
-          format = "{icon}";
-          format-icons = {
-            "1" = "1";
-            "2" = "2";
-            "3" = "3";
-            "4" = "4";
-            "5" = "5";
-            "6" = "6";
-            "7" = "7";
-            "8" = "8";
-            "9" = "9";
-            "10" = "10";
-            "urgent" = "";
-            "active" = "";
-            "default" = "";
+          modules-left = [
+            "hyprland/workspaces"
+            "custom/separator#left"
+          ];
+
+          modules-center = [ ];
+
+          modules-right = [
+            "custom/separator#1"
+            "tray"
+            "custom/separator#2"
+            "network"
+            "custom/separator#3"
+            "battery"
+            "custom/separator#4"
+            "cpu"
+            "custom/separator#5"
+            "memory"
+            "custom/separator#6"
+            "disk"
+            "custom/separator#7"
+            "clock"
+            "custom/separator#8"
+          ];
+
+          "hyprland/workspaces" = {
+            format = "{name}";
+            disable-scroll = true;
+            all-outputs = true;
+            on-click = "activate";
           };
-        };
 
-        "hyprland/window" = {
-          format = "{title}";
-          max-length = 40;
-          rewrite = {
-            "(.*) - Mozilla Firefox" = "🌎 $1";
-            "(.*) - zsh" = "> [$1]";
+          "custom/separator" = {
+            format = "|";
+            tooltip = false;
           };
-        };
 
-        "clock" = {
-          format = "  {:%I:%M %p}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = "  {:%A, %B %d, %Y}";
-        };
-
-        "battery" = {
-          states = {
-            good = 95;
-            warning = 30;
-            critical = 15;
+          network = {
+            format-wifi = "Online";
+            format-ethernet = "Online";
+            format-disconnected = "Offline";
+            tooltip-format = "{ifname} via {gwaddr}";
           };
-          format = "{icon}  {capacity}%";
-          format-charging = "  {capacity}%";
-          format-plugged = "  {capacity}%";
-          format-alt = "{icon}  {time}";
-          format-icons = ["" "" "" "" ""];
-        };
 
-        "network" = {
-          format-wifi = "  {essid}";
-          format-ethernet = "󰈀  {ipaddr}/{cidr}";
-          tooltip-format = "󰈀  {ifname} via {gwaddr}";
-          format-linked = "󰈀  {ifname} (No IP)";
-          format-disconnected = "⚠  Disconnected";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
-        };
-
-        "pulseaudio" = {
-          format = "{icon}  {volume}%";
-          format-bluetooth = "{icon} {volume}%";
-          format-bluetooth-muted = " {icon}";
-          format-muted = " Muted";
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+          battery = {
+            format = "BAT: {capacity}%";
           };
-          on-click = "pavucontrol";
-        };
 
-        "tray" = {
-          icon-size = 18;
-          spacing = 10;
+          cpu = {
+            format = "CPU: {usage}%";
+            tooltip = false;
+          };
+
+          memory = {
+            format = "Mem: {used:0.1f}GiB";
+            tooltip = false;
+          };
+
+          disk = {
+            interval = 30;
+            format = "Disk: {used}";
+            path = "/";
+            tooltip = false;
+          };
+
+          clock = {
+            format = "{:%H:%M}";
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          };
         };
       };
     };
-  };
-}
+  }
