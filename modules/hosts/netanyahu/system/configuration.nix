@@ -31,6 +31,9 @@
       # Desktop
       self.nixosModules.sddm
       self.nixosModules.hyprland
+
+      # Roles
+      self.nixosModules.gaming
     ];
 
     networking = {
