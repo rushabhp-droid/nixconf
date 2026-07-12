@@ -18,8 +18,14 @@ _: {
 
     nix = {
       settings = {
-        substituters = [ "https://attic.xuyh0120.win/lantian" ];
-        trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+        substituters = [
+          "https://attic.xuyh0120.win/lantian"
+          "https://kryptoaries.cachix.org"
+        ];
+        trusted-public-keys = [
+          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+          "kryptoaries.cachix.org-1:FZWVC6eJRQqUM+I/Qal+SgWf20w8roz5IzhDEbG/WiM="
+        ];
         experimental-features = [
           "nix-command"
           "flakes"
