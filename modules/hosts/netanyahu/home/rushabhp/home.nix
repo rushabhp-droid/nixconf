@@ -15,7 +15,6 @@
       self.homeModules.starship
       self.homeModules.btop
       self.homeModules.bat
-      self.homeModules.neovim
       self.homeModules.bash
 
       # Desktop
