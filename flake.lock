@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783706782,
-        "narHash": "sha256-D4iV0hjFbKHxZsV+mTZkPb4CbFyrUJJcK1UW/jXGDD0=",
+        "lastModified": 1783879059,
+        "narHash": "sha256-ZJNAWU8ZNrMMj6xx3mJOdl6q5Y8xiV4s8ixg14NxXwI=",
         "owner": "opengamingcollective",
         "repo": "cardwire",
-        "rev": "81a038b0284359f813d937cf90b7ecd7f1141d88",
+        "rev": "42715a70d182bd0c98d44a3fd99b1fa4165145ed",
         "type": "github"
       },
       "original": {
@@ -734,11 +734,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783866614,
-        "narHash": "sha256-o2h5BfVz9MPIERBPVHtvQGilphtNn5+cCuqqfY5Lkq8=",
+        "lastModified": 1783893146,
+        "narHash": "sha256-eKn371TzEBL1fbyYMXgmiCMeoJQHe8s6b2lL5Z2vBQc=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "51602966429e8ccae61324e56b51c37308d1b64e",
+        "rev": "59b3e080fe16995291da16e9229f61aa8aff350a",
         "type": "github"
       },
       "original": {
