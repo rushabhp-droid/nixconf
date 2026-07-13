@@ -9,14 +9,12 @@ _: {
 
       programs.helix = {
         enable = true;
-        package = pkgs.evil-helix;
         extraPackages = with pkgs; [
           nixd
           nil
           nixfmt
           statix
           deadnix
-          ripgrep
         ];
         settings = {
           editor = {
