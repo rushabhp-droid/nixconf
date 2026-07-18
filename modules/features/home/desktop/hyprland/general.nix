@@ -1,6 +1,6 @@
 _: {
 
-  flake.homeModules.hyprland = { lib, ... }: {
+  flake.homeModules.hyprland = _: {
     wayland.windowManager.hyprland.settings = {
 
       # ── Gestures ─────────────────────────────────────────────────────
