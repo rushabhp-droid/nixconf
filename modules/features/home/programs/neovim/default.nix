@@ -4,13 +4,6 @@
 
     programs.nixvim = {
       enable = true;
-
-      plugins = {
-
-        bufferline.enable = true;
-        lualine.enable = true;
-
-      };
     };
   };
 }

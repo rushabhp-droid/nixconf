@@ -10,6 +10,7 @@
       self.homeModules.kitty
       self.homeModules.zen
       self.homeModules.helix
+      self.homeModules.neovim
       self.homeModules.mcfly
       self.homeModules.direnv
       self.homeModules.starship
