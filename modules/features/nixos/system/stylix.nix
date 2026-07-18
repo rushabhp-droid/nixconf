@@ -9,7 +9,7 @@
 
       base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
 
-      image = ../../../../wallpapers/linux-purple.png;
+      image = ../../../../wallpapers/cowboy-bebop.jpg;
 
       polarity = "dark";
 
