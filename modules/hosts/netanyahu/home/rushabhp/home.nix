@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ self, host, ... }: {
   flake.homeModules.home = { ... }: {
 
     imports = [
@@ -35,8 +35,8 @@
     ];
 
     home = {
-      username = "rushabhp";
-      homeDirectory = "/home/rushabhp";
+      inherit (host) username;
+      homeDirectory = host.homeDir;
       stateVersion = "26.05";
       pointerCursor.enable = true;
     };

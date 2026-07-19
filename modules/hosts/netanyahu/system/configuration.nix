@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.netanyahuConfiguration = { ... }: {
+  flake.nixosModules.netanyahuConfiguration = { config, ... }: {
     imports = [
       # Disk Configuration
       inputs.disko.nixosModules.disko
@@ -43,11 +43,11 @@
     ];
 
     networking = {
-      hostName = "netanyahu";
+      hostName = config.host.hostname;
       networkmanager.enable = true;
     };
 
-    time.timeZone = "Asia/Kolkata";
+    time.timeZone = config.host.timezone;
 
     system.stateVersion = "26.05";
   };

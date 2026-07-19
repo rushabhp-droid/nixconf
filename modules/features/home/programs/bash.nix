@@ -1,10 +1,10 @@
-_: {
+{ host, ... }: {
   flake.homeModules.bash = _: {
     programs.bash = {
       enable = true;
       enableCompletion = true;
       initExtra = ''
-        source <(nh alias use /home/rushabhp/nixconf)
+        source <(nh alias use ${host.flakeDir})
       '';
     };
   };

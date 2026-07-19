@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.home-manager = { ... }: {
+  flake.nixosModules.home-manager = { config, ... }: {
     imports = [
       # Flake Input
       inputs.home-manager.nixosModules.home-manager
@@ -10,7 +10,17 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {
+        inherit inputs;
+        host = {
+          inherit (config.host)
+            username
+            hostname
+            homeDir
+            flakeDir
+            ;
+        };
+      };
       users.rushabhp = self.homeModules.home;
     };
   };
