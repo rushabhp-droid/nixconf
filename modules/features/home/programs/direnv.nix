@@ -13,6 +13,7 @@
       direnv-instant = {
         enable = true;
         enableBashIntegration = true;
+        enableKittyIntegration = true;
       };
 
     };
