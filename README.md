@@ -4,22 +4,22 @@ Personal NixOS configuration managed as a Nix flake, using [flake-parts](https:/
 
 ## ✨ Overview
 
-|                     |                                                                                 |
-| ------------------- | ------------------------------------------------------------------------------- |
-| **OS**              | NixOS Unstable                                                                  |
-| **Desktop**         | Hyprland (Wayland)                                                              |
-| **Display Manager** | SDDM                                                                            |
-| **Shell**           | Bash + Starship                                                                 |
-| **Terminal**        | Kitty                                                                           |
-| **Editor**          | Helix                                                                           |
-| **Browser**         | Zen                                                                             |
-| **Theme**           | [Stylix](https://github.com/nix-community/stylix) (kanagawa-dragon dark palette) |
-| **Fonts**           | JetBrainsMono Nerd Font, Noto Color Emoji                                       |
-| **Cursor**          | Bibata Modern Ice                                                               |
-| **Icons**           | WhiteSur                                                                        |
-| **Gaming**          | Steam, Gamemode, Gamescope, Heroic, Lutris, MangoHud, PrismLauncher            |
+|                     |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **OS**              | NixOS Unstable                                                                                                    |
+| **Desktop**         | Hyprland (Wayland)                                                                                                |
+| **Display Manager** | SDDM                                                                                                              |
+| **Shell**           | Bash + Starship                                                                                                   |
+| **Terminal**        | Kitty                                                                                                             |
+| **Editor**          | Helix                                                                                                             |
+| **Browser**         | Zen                                                                                                               |
+| **Theme**           | [Stylix](https://github.com/nix-community/stylix) (kanagawa-dragon dark palette)                                  |
+| **Fonts**           | JetBrainsMono Nerd Font, Noto Color Emoji                                                                         |
+| **Cursor**          | Bibata Modern Ice                                                                                                 |
+| **Icons**           | WhiteSur                                                                                                          |
+| **Gaming**          | Steam, Gamemode, Gamescope, Heroic, Lutris, MangoHud, PrismLauncher                                               |
 | **LLM Agents**      | [opencode](https://github.com/anomalyco/opencode) via [llm-agents.nix](https://github.com/numtide/llm-agents.nix) |
-| **Formatter**       | treefmt (nixfmt, statix, deadnix, prettier)                                     |
+| **Formatter**       | treefmt (nixfmt, statix, deadnix, prettier)                                                                       |
 
 ## 🏠 Hosts
 
@@ -27,16 +27,17 @@ Personal NixOS configuration managed as a Nix flake, using [flake-parts](https:/
 
 MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
 
-| Component   | Details                                                                                                  |
-| ----------- | -------------------------------------------------------------------------------------------------------- |
-| GPU         | NVIDIA (open driver, fine-grained power management) + Intel (PRIME)                                      |
-| Audio       | PipeWire                                                                                                 |
-| Bluetooth   | Enabled                                                                                                  |
+| Component     | Details                                                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------------------------------- |
+| GPU           | NVIDIA (open driver, fine-grained power management) + Intel (PRIME)                                                  |
+| Audio         | PipeWire                                                                                                             |
+| Bluetooth     | Enabled                                                                                                              |
 | Apple Devices | [LibrePods](https://github.com/nix-community/nixpkgs/pkgs/by-name/li/librepods) — AirPods / Apple device integration |
-| Power       | auto-cpufreq                                                                                             |
-| Disk Layout | GPT — 512 MB ESP (`/boot`) + ext4 root (`/`), managed by [disko](https://github.com/nix-community/disko) |
-| Swap        | zram                                                                                                     |
-| Optimus     |  [Cardwire](https://github.com/opengamingcollective/cardwire) (graphics card management)                    |
+| Power         | auto-cpufreq                                                                                                         |
+| Disk Layout   | GPT — 512 MB ESP (`/boot`) + ext4 root (`/`), managed by [disko](https://github.com/nix-community/disko)             |
+| Swap          | zram                                                                                                                 |
+| Optimus       | [Cardwire](https://github.com/opengamingcollective/cardwire) (graphics card management)                              |
+
 ## 📂 Project Structure
 
 ```
@@ -78,23 +79,23 @@ MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
 
 ## 🧩 Flake Inputs
 
-| Input                                                            | Purpose                                   |
-| ---------------------------------------------------------------- | ----------------------------------------- |
-| [nixpkgs](https://github.com/NixOS/nixpkgs) (unstable)           | Package set & NixOS modules               |
-| [flake-parts](https://github.com/hercules-ci/flake-parts)        | Structured flake outputs                  |
-| [import-tree](https://github.com/vic/import-tree)                | Auto-import the `modules/` directory tree |
-| [home-manager](https://github.com/nix-community/home-manager)    | Declarative user environment              |
-| [stylix](https://github.com/nix-community/stylix)                | System-wide theming from a wallpaper      |
-| [disko](https://github.com/nix-community/disko)                  | Declarative disk partitioning             |
-| [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)      | Automatic CPU power management            |
-| [zen-browser](https://github.com/0xc000022070/zen-browser-flake) | Zen browser Nix packaging                 |
-| [firefox-addons](https://gitlab.com/rycee/nur-expressions)       | Firefox / Zen extension packaging         |
-| [musnix](https://github.com/musnix/musnix)                       | Real-time audio support                   |
-| [cardwire](https://github.com/opengamingcollective/cardwire)     | Hardware-level audio card management      |
-| [treefmt-nix](https://github.com/numtide/treefmt-nix)            | Unified code formatting                   |
-| [nix-cachyos-kernel](https://github.com/xddxdd/nix-cachyos-kernel) | CachyOS performance kernel              |
-| [nixvim](https://github.com/nix-community/nixvim)                | Neovim configuration framework            |
-| [llm-agents](https://github.com/numtide/llm-agents.nix)          | LLM agent packages (opencode)             |
+| Input                                                              | Purpose                                   |
+| ------------------------------------------------------------------ | ----------------------------------------- |
+| [nixpkgs](https://github.com/NixOS/nixpkgs) (unstable)             | Package set & NixOS modules               |
+| [flake-parts](https://github.com/hercules-ci/flake-parts)          | Structured flake outputs                  |
+| [import-tree](https://github.com/vic/import-tree)                  | Auto-import the `modules/` directory tree |
+| [home-manager](https://github.com/nix-community/home-manager)      | Declarative user environment              |
+| [stylix](https://github.com/nix-community/stylix)                  | System-wide theming from a wallpaper      |
+| [disko](https://github.com/nix-community/disko)                    | Declarative disk partitioning             |
+| [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)        | Automatic CPU power management            |
+| [zen-browser](https://github.com/0xc000022070/zen-browser-flake)   | Zen browser Nix packaging                 |
+| [firefox-addons](https://gitlab.com/rycee/nur-expressions)         | Firefox / Zen extension packaging         |
+| [musnix](https://github.com/musnix/musnix)                         | Real-time audio support                   |
+| [cardwire](https://github.com/opengamingcollective/cardwire)       | Hardware-level audio card management      |
+| [treefmt-nix](https://github.com/numtide/treefmt-nix)              | Unified code formatting                   |
+| [nix-cachyos-kernel](https://github.com/xddxdd/nix-cachyos-kernel) | CachyOS performance kernel                |
+| [nixvim](https://github.com/nix-community/nixvim)                  | Neovim configuration framework            |
+| [llm-agents](https://github.com/numtide/llm-agents.nix)            | LLM agent packages (opencode)             |
 
 ## 🚀 Usage
 

@@ -1,5 +1,5 @@
-{ host, ... }: {
-  flake.homeModules.bash = { host, ... }: {
+_: {
+  flake.homeModules.bash = _: {
     programs.bash = {
       enable = true;
       enableCompletion = true;

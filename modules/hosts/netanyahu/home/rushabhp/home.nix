@@ -1,4 +1,4 @@
-{ self, host, ... }: {
+{ self, ... }: {
   flake.homeModules.home = { host, ... }: {
 
     imports = [
