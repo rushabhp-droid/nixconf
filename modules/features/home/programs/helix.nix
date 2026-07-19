@@ -60,7 +60,7 @@ _: {
               args = [ "--semantic-tokens=true" ];
               config.nixd =
                 let
-                  flakeDir = "(builtins.getFlake (toString /home/${userName}/nixconf-d))";
+                  flakeDir = "(builtins.getFlake (toString /home/${userName}/nixconf))";
                   nixosOpts = "${flakeDir}.nixosConfigurations.${hostname}.options";
                 in
                 {

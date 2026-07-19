@@ -11,7 +11,6 @@ _: {
       varia
       shortwave
       loupe
-      celluloid
       aria2
     ];
 

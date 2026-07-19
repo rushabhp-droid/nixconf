@@ -38,6 +38,8 @@
 
       # Programs
       self.nixosModules.llm-agents
+      self.nixosModules.comma
+      self.nixosModules.firewall
     ];
 
     networking = {

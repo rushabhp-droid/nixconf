@@ -12,6 +12,8 @@
       self.homeModules.helix
       self.homeModules.neovim
       self.homeModules.mcfly
+      self.homeModules.fzf
+      self.homeModules.zoxide
       self.homeModules.direnv
       self.homeModules.starship
       self.homeModules.btop

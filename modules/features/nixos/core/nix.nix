@@ -9,6 +9,11 @@ _: {
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 3";
         flake = "/home/rushabhp/nixconf";
+        aliases = {
+          rebuild = "os switch -- --accept-flake-config";
+          update = "os update -- --accept-flake-config";
+          clean = "clean all -- --accept-flake-config";
+        };
       };
 
       nix-ld = {
@@ -18,6 +23,7 @@ _: {
 
     nix = {
       settings = {
+        auto-optimise-store = true;
         substituters = [
           "https://attic.xuyh0120.win/lantian"
           "https://kryptoaries.cachix.org"

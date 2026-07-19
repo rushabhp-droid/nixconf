@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-  flake.homeModules.neovim = { lib, ... }: {
+{ inputs, ... }: {
+  flake.homeModules.neovim = { ... }: {
     imports = [ inputs.nixvim.homeModules.nixvim ];
 
     programs.nixvim = {
