@@ -17,6 +17,7 @@
       self.homeModules.direnv
       self.homeModules.starship
       self.homeModules.zathura
+      self.homeModules.lf
       self.homeModules.btop
       self.homeModules.bat
       self.homeModules.bash
