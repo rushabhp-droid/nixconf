@@ -13,10 +13,12 @@ Personal NixOS configuration managed as a Nix flake, using [flake-parts](https:/
 | **Terminal**        | Kitty                                                                           |
 | **Editor**          | Helix                                                                           |
 | **Browser**         | Zen                                                                             |
-| **Theme**           | [Stylix](https://github.com/nix-community/stylix) (auto-generated dark palette) |
+| **Theme**           | [Stylix](https://github.com/nix-community/stylix) (kanagawa-dragon dark palette) |
 | **Fonts**           | JetBrainsMono Nerd Font, Noto Color Emoji                                       |
 | **Cursor**          | Bibata Modern Ice                                                               |
 | **Icons**           | WhiteSur                                                                        |
+| **Gaming**          | Steam, Gamemode, Gamescope, Heroic, Lutris, MangoHud, PrismLauncher            |
+| **LLM Agents**      | [opencode](https://github.com/anomalyco/opencode) via [llm-agents.nix](https://github.com/numtide/llm-agents.nix) |
 | **Formatter**       | treefmt (nixfmt, statix, deadnix, prettier)                                     |
 
 ## 🏠 Hosts
@@ -28,8 +30,9 @@ MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
 | Component   | Details                                                                                                  |
 | ----------- | -------------------------------------------------------------------------------------------------------- |
 | GPU         | NVIDIA (open driver, fine-grained power management) + Intel (PRIME)                                      |
-| Audio       | PipeWire                                                                                                 |
+| Audio       | PipeWire + [Cardwire](https://github.com/opengamingcollective/cardwire) (audio card management)          |
 | Bluetooth   | Enabled                                                                                                  |
+| Apple Devices | [LibrePods](https://github.com/nix-community/nixpkgs/pkgs/by-name/li/librepods) — AirPods / Apple device integration |
 | Power       | auto-cpufreq                                                                                             |
 | Disk Layout | GPT — 512 MB ESP (`/boot`) + ext4 root (`/`), managed by [disko](https://github.com/nix-community/disko) |
 | Swap        | zram                                                                                                     |
@@ -44,6 +47,9 @@ MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
 └── modules/
     ├── parts.nix                   # flake-parts options (homeModules, supported systems)
     ├── treefmt.nix                 # Code formatting (nixfmt, statix, deadnix, prettier)
+    ├── overlays/
+    │   ├── cachyos.nix             # CachyOS kernel overlay
+    │   └── librepods.nix           # LibrePods Qt/wgpu overlay
     ├── hosts/
     │   └── netanyahu/
     │       ├── system/
@@ -60,12 +66,14 @@ MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
         │   ├── core/               # Boot, locale, nix settings, users
         │   ├── desktop/            # Hyprland, SDDM
         │   ├── hardware/           # NVIDIA, Bluetooth, sound, cardwire, udev, power mgmt
-        │   └── system/             # Bash, Stylix theming, zram
+        │   │   └── power-management/  # auto-cpufreq
+        │   └── system/             # Bash, comma, firewall, gaming, llm-agents, Stylix, zram
         └── home/                   # home-manager (user) modules
             ├── desktop/            # Hyprland, Hyprpaper, Hypridle, Hyprlock, SwayNC,
-            │                       # SwayOSD, Waybar, Quickshell, Rofi, wleave, cliphist, XDG
-            └── programs/           # Bash, direnv, eza, fastfetch, Git, Helix, jj, Kitty,
-                                    # mcfly, multimedia, Rofi, Starship, wleave, Zen
+            │                       # SwayOSD, Waybar, Rofi, wleave, cliphist, XDG
+            └── programs/           # Bash, bat, btop, direnv, eza, fastfetch, fzf, Git,
+                                    # Helix, jj, Kitty, mcfly, multimedia, Neovim, Rofi,
+                                    # Starship, wleave, Zen, zoxide
 ```
 
 ## 🧩 Flake Inputs
@@ -82,9 +90,11 @@ MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
 | [zen-browser](https://github.com/0xc000022070/zen-browser-flake) | Zen browser Nix packaging                 |
 | [firefox-addons](https://gitlab.com/rycee/nur-expressions)       | Firefox / Zen extension packaging         |
 | [musnix](https://github.com/musnix/musnix)                       | Real-time audio support                   |
-| [quickshell](https://git.outfoxxed.me/outfoxxed/quickshell)      | Qt-based shell / bar framework            |
 | [cardwire](https://github.com/opengamingcollective/cardwire)     | Hardware-level audio card management      |
 | [treefmt-nix](https://github.com/numtide/treefmt-nix)            | Unified code formatting                   |
+| [nix-cachyos-kernel](https://github.com/xddxdd/nix-cachyos-kernel) | CachyOS performance kernel              |
+| [nixvim](https://github.com/nix-community/nixvim)                | Neovim configuration framework            |
+| [llm-agents](https://github.com/numtide/llm-agents.nix)          | LLM agent packages (opencode)             |
 
 ## 🚀 Usage
 
@@ -124,11 +134,14 @@ The flake uses **flake-parts** with **import-tree** to automatically discover an
 flake.nix
   └─ flake-parts + import-tree
        └─ modules/**/*.nix  (auto-discovered)
-            ├─ flake.nixosModules.*   ← system-level features
-            ├─ flake.homeModules.*    ← user-level features
-            ├─ flake.nixosConfigurations.*  ← host definitions
-            └─ flake.diskoConfigurations.* ← disk layouts
+            ├─ flake.nixosModules.*       ← system-level features
+            ├─ flake.homeModules.*        ← user-level features
+            ├─ flake.nixosConfigurations.* ← host definitions
+            ├─ flake.diskoConfigurations.* ← disk layouts
+            └─ flake.overlays.*           ← package overlays
 ```
+
+CI is handled via a GitHub Actions workflow (`.github/workflows/build-and-cache.yml`) that builds the `netanyahu` configuration and pushes it to a [Cachix](https://www.cachix.org/) cache (`kryptoaries`).
 
 This means adding a new feature is as simple as dropping a `.nix` file into the appropriate `modules/features/` subdirectory — no manual import list to update at the flake level.
 
