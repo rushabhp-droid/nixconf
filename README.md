@@ -30,13 +30,13 @@ MSI Katana laptop with NVIDIA (hybrid / PRIME offload) + Intel, NVMe storage.
 | Component   | Details                                                                                                  |
 | ----------- | -------------------------------------------------------------------------------------------------------- |
 | GPU         | NVIDIA (open driver, fine-grained power management) + Intel (PRIME)                                      |
-| Audio       | PipeWire + [Cardwire](https://github.com/opengamingcollective/cardwire) (audio card management)          |
+| Audio       | PipeWire                                                                                                 |
 | Bluetooth   | Enabled                                                                                                  |
 | Apple Devices | [LibrePods](https://github.com/nix-community/nixpkgs/pkgs/by-name/li/librepods) — AirPods / Apple device integration |
 | Power       | auto-cpufreq                                                                                             |
 | Disk Layout | GPT — 512 MB ESP (`/boot`) + ext4 root (`/`), managed by [disko](https://github.com/nix-community/disko) |
 | Swap        | zram                                                                                                     |
-
+| Optimus     |  [Cardwire](https://github.com/opengamingcollective/cardwire) (graphics card management)                    |
 ## 📂 Project Structure
 
 ```
