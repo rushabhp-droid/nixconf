@@ -1,9 +1,20 @@
-_: {
+{ inputs, ... }: {
   flake.homeModules.direnv = _: {
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      enableBashIntegration = true;
+
+    imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
+
+    programs = {
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+        enableBashIntegration = true;
+      };
+
+      direnv-instant = {
+        enable = true;
+        enableBashIntegration = true;
+      };
+
     };
   };
 }
