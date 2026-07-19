@@ -8,7 +8,7 @@ _: {
         misc = {
           force_default_wallpaper = 0;
           disable_hyprland_logo = true;
-          vrr = 1;
+          vrr = 0;
           enable_swallow = true;
           swallow_regex = "^(kitty|Alacritty)$";
           disable_splash_rendering = true;
