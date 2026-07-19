@@ -13,6 +13,8 @@
           enable = true;
           theme = "dashboard";
         };
+
+        telescope.enable = true;
       };
     };
   };

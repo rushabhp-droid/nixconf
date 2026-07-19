@@ -35,6 +35,9 @@
 
       # Roles
       self.nixosModules.gaming
+
+      # Programs
+      self.nixosModules.llm-agents
     ];
 
     networking = {
