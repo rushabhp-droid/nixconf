@@ -1,6 +1,10 @@
 _: {
   flake.homeModules.helix = { pkgs, host, ... }: {
 
+    home.packages = with pkgs; [
+      glow
+    ];
+
     programs.helix = {
       enable = true;
       extraPackages = with pkgs; [
