@@ -16,6 +16,7 @@
       self.homeModules.zoxide
       self.homeModules.direnv
       self.homeModules.starship
+      self.homeModules.zathura
       self.homeModules.btop
       self.homeModules.bat
       self.homeModules.bash
