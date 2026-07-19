@@ -1,11 +1,8 @@
 { host, ... }: {
-  flake.homeModules.bash = _: {
+  flake.homeModules.bash = { host, ... }: {
     programs.bash = {
       enable = true;
       enableCompletion = true;
-      initExtra = ''
-        source <(nh alias use ${host.flakeDir})
-      '';
     };
   };
 }

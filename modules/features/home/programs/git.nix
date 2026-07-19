@@ -3,14 +3,6 @@ _: {
     programs = {
       git = {
         enable = true;
-        delta = {
-          enable = true;
-          options = {
-            navigate = true;
-            side-by-side = true;
-            line-numbers = true;
-          };
-        };
         settings = {
           user = {
             name = "Rushabh Patil";
@@ -20,6 +12,15 @@ _: {
           push.autoSetupRemote = true;
           init.defaultBranch = "main";
           rerere.enabled = true;
+        };
+      };
+
+      delta = {
+        enable = true;
+        options = {
+          navigate = true;
+          side-by-side = true;
+          line-numbers = true;
         };
       };
 

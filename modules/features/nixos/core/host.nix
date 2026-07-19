@@ -1,27 +1,27 @@
 _: {
   flake.nixosModules.core = { lib, ... }: {
     options.host = {
-      username = {
+      username = lib.mkOption {
         type = lib.types.str;
         default = "rushabhp";
         description = "Primary user username";
       };
-      hostname = {
+      hostname = lib.mkOption {
         type = lib.types.str;
         default = "netanyahu";
         description = "System hostname";
       };
-      timezone = {
+      timezone = lib.mkOption {
         type = lib.types.str;
         default = "Asia/Kolkata";
         description = "System timezone";
       };
-      homeDir = {
+      homeDir = lib.mkOption {
         type = lib.types.str;
         default = "/home/rushabhp";
         description = "User home directory";
       };
-      flakeDir = {
+      flakeDir = lib.mkOption {
         type = lib.types.str;
         default = "/home/rushabhp/nixconf";
         description = "Path to the nixconf flake";
