@@ -5,7 +5,7 @@
 
     boot = {
       loader = {
-        systemd-boot.enable = true;
+        limine.enable = true;
         efi.canTouchEfiVariables = true;
       };
       kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
