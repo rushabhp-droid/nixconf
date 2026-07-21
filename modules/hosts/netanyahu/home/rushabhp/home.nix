@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.homeModules.home = { host, ... }: {
+  flake.homeModules.home = { host, pkgs, ... }: {
 
     imports = [
       self.homeModules.git
@@ -41,6 +41,9 @@
       homeDirectory = host.homeDir;
       stateVersion = "26.05";
       pointerCursor.enable = true;
+      packages = with pkgs; [
+        localsend
+      ];
     };
     programs.home-manager.enable = true;
   };
