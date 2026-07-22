@@ -43,6 +43,7 @@
       pointerCursor.enable = true;
       packages = with pkgs; [
         localsend
+        kdePackages.okular
       ];
     };
     programs.home-manager.enable = true;
