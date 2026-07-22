@@ -1,9 +1,14 @@
 _: {
   flake.nixosModules.firewall = _: {
-    networking.firewall = {
-      enable = true;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
+    networking = {
+      nftables = {
+        enable = true;
+      };
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ 53317 ];
+        allowedUDPPorts = [ ];
+      };
     };
   };
 }
